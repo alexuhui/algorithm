@@ -6,4 +6,7 @@
 ![image](Assets/001CircleRectIntersect/geogebra-export.png)
   
 ### 方法2：
-这种方法比较抽象 [参考知乎答案](https://www.zhihu.com/question/24251545)
+设c为矩形中心，h为矩形半長，p为圆心，r为半径。\<br>
+方法是计算圆心与矩形的最短距离 u，若 u 的长度小于 r 则两者相交。\<br>
+这种方法比较抽象\<br>
+[参考知乎答案](https://www.zhihu.com/question/24251545)
