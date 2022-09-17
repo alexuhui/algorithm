@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 
+
 public class CircleRectIntersect : MonoBehaviour
 {
     public float Width = 5f;
@@ -33,14 +34,14 @@ public class CircleRectIntersect : MonoBehaviour
         sw.Start();
         for (int i = 0; i < cnt; i++)
         {
-            YHMath.CheckCircleRectInsert1(quad.position, ball.position, new Vector2(halfW, halfH), Radius);
+            YHMath.CheckCircleRectInsert1(quad.position, new Vector2(halfW, halfH), ball.position, Radius);
         }
         UnityEngine.Debug.Log(sw.ElapsedMilliseconds);
 
         sw.Restart();
         for (int i = 0; i < cnt; i++)
         {
-            YHMath.CheckCircleRectInsert2(quad.position, ball.position, new Vector2(halfW, halfH), Radius);
+            YHMath.CheckCircleRectInsert2(quad.position, new Vector2(halfW, halfH), ball.position, Radius);
         }
         UnityEngine.Debug.Log(sw.ElapsedMilliseconds);
 
@@ -63,9 +64,10 @@ public class CircleRectIntersect : MonoBehaviour
     private void Check()
     {
         bool insert;
-        insert = YHMath.CheckCircleRectInsert1(quad.position, ball.position, new Vector2(halfW, halfH), Radius);
-        //insert = CheckCircleRectInsert2(quad.position, ball.position, new Vector2(halfW, halfH), Radius);
-
+        //insert = YHMath.CheckCircleRectInsert1(quad.position, new Vector2(halfW, halfH), ball.position, Radius);
+        //insert = YHMath.CheckCircleRectInsert2(quad.position, new Vector2(halfW, halfH), ball.position, Radius);
+        //------------- 还旋转的检测
+        insert = YHMath.CheckCircleRectRotInsert(quad.position, new Vector2(halfW, halfH), quad.localEulerAngles.z, ball.position, Radius);
 
         if (quadMat != null)
             quadMat.color = insert ? Color.yellow : Color.white;
