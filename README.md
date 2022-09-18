@@ -9,7 +9,7 @@ unity 2021.3.5f1c1
 
 ### 001.CircleRectIntersect判断圆与矩形相交
 #### 方法1：<br>
-![image](Assets/001CircleRectIntersect/geogebra-export.png)
+![image](Assets/001CircleRectIntersect/CircleRectInsert.png)
   
 #### 方法2：<br>
 设c为矩形中心，h为矩形半長，p为圆心，r为半径。<br>
