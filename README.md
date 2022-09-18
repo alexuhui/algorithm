@@ -16,7 +16,7 @@ unity version 2021.3.5f1c1 <br>
 #### 方法1：<br>
 这种方法很直觉，很好理解。<br>
 首先，找到相交和相离的边界条件。如下图：<br>
-![image](Assets/001CircleRectIntersect/CircleRectInsert.png)
+![image](Assets/001CircleRectIntersect/CircleRectInsert.png) <br>
 
 想象一下，有个圆圆的轮子绕着矩形滚一圈，圆心的坐标，是不是就是边界条件？<br>
 那么，<br>
@@ -59,7 +59,7 @@ public static bool CheckCircleRectInsert1(Vector2 rectPos, Vector2 halfSize, Vec
 想象一下，类似折纸，由于矩形的对称性，可以把任意位置的圆对称到矩形的右上方（当然，也可能是正上方，正右方，或者中心）。<br>
 而这个处理过程也很简单，算出矩形中心指向圆心的向量`v`，只要对`x`, `y`取绝对值即可。<br>
 如下图：<br>
-![image](Assets/001CircleRectIntersect/CircleRectInsert2.png)
+![image](Assets/001CircleRectIntersect/CircleRectInsert2.png) <br>
 本质上，该方法，也是分三种情况来理解：<br>
 1、当圆在拐角时，向量`v - h`得到的向量`u`的模就是顶点到圆心的距离，所以，`|u| < r`即是相交 <br>
 2、当圆在矩形上方\下方时，边界值也是矩形的宽的一半加上圆的半径。这里可以忽略`u`的`x`，那么`|u|`就是圆心到矩形边的距离了，所以，`|u| < r`即是相交 <br>
@@ -83,7 +83,7 @@ public static bool CheckCircleRectInsert2(Vector2 rectPos, Vector2 halfSize, Vec
 把圆心变换到矩形的局部空间（以矩形中心为原点，坐标轴平行于矩形的边）。<br>
 这样，接着用上面的方法判断就好了。<br>
 变换矩阵的构造就简单上个图：<br>
-![image](Assets/001CircleRectIntersect/20220917164345.png)
+![image](Assets/001CircleRectIntersect/20220917164345.jpg)  <br>
 截图来自闫令琪大神的课件：
 [GAMES101 现代计算机图形学入门](https://www.bilibili.com/video/BV1X7411F744?p=3&spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=9ac312e492d54319bc438327ffb04b0c)  <br>
 ```public static Matrix3x3 Get2DTRMatrix(Vector2 pos, float rot)
