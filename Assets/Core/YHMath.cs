@@ -6,7 +6,7 @@ public static class YHMath
 {
     #region 圆与矩形相交
     /// <summary>
-    /// 判断圆与矩形相交，适用于矩形有边平行于坐标轴的情况
+    /// 判断圆与矩形相交，适用于矩形的边平行于坐标轴的情况
     /// </summary>
     /// <param name="rectPos"></param>
     /// <param name="circlePos"></param>
@@ -35,7 +35,7 @@ public static class YHMath
     }
 
     /// <summary>
-    /// 判断圆与矩形相交，适用于矩形有边平行于坐标轴的情况
+    /// 判断圆与矩形相交，适用于矩形的边平行于坐标轴的情况
     /// </summary>
     /// <param name="rectPos"></param>
     /// <param name="circlePos"></param>
@@ -72,10 +72,18 @@ public static class YHMath
         Vector2 circleLocalPos = new Vector2(x,y);
 
         // 注意这里转到了矩形本地坐标，那矩形中心点就是(0,0)了
-        return CheckCircleRectInsert2(Vector2.zero, halfSize, circleLocalPos, radius);
+        return CheckCircleRectInsert1(Vector2.zero, halfSize, circleLocalPos, radius);
+        //return CheckCircleRectInsert2(Vector2.zero, halfSize, circleLocalPos, radius);
     }
 
-    //public static 
+    public static bool CheckCircleRectRotInsert2(Vector2 rectPos, Vector2 halfSize, float rectRot, Vector2 circlePos, float radius)
+    {
+        var dir = circlePos - rectPos;
+        dir = Quaternion.AngleAxis(-rectRot, Vector3.forward) * dir;
+        var v = Vector2.Max(dir, -dir);
+        var u = Vector2.Max(v - halfSize, Vector3.zero);
+        return Vector2.Dot(u, u) <= radius * radius;
+    }
 
     #endregion
 

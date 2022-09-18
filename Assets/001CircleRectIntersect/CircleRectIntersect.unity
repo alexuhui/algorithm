@@ -265,9 +265,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 592093511}
-  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: -4, y: -1, z: 0}
-  m_LocalScale: {x: 5, y: 3, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.28401536, w: 0.95881975}
+  m_LocalPosition: {x: 2.06, y: -0.34, z: 0}
+  m_LocalScale: {x: 4.1, y: 2.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -370,9 +370,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01ccbe809f1d779488ba0c934a19954e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Width: 5
-  Height: 3
-  Radius: 0.89
+  RectPos: {x: 2.06, y: -0.34}
+  Width: 4.1
+  Height: 2.4
+  Rot: 33
+  Radius: 0.9
   ball: {fileID: 993739155}
   quad: {fileID: 592093515}
 --- !u!1 &606048298
@@ -446,7 +448,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u70B9\u51FB\u6216\u62D6\u52A8\u5C4F\u5E55\u53EF\u4EE5\u79FB\u52A8\u7403"
+  m_Text: "\u70B9\u51FB\u6216\u62D6\u52A8\u5C4F\u5E55\u53EF\u4EE5\u79FB\u52A8\u7403
+    \n\u5728<color=#0DFB16>Main Camera</color>\u7684<color=#0DFB16>CircleRectIntersect</color>\u7EC4\u4EF6\u8C03\u6574\u53C2\u6570"
 --- !u!222 &606048301
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -531,8 +534,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 993739151}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1, z: 0}
-  m_LocalScale: {x: 1.78, y: 1.78, z: 1}
+  m_LocalPosition: {x: -1, y: 1, z: 0}
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

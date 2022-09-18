@@ -6,8 +6,11 @@ using UnityEngine;
 
 public class CircleRectIntersect : MonoBehaviour
 {
+    public Vector2 RectPos;
     public float Width = 5f;
     public float Height = 3f;
+    public float Rot = 45;
+
     public float Radius =0.5f;
 
     public Transform ball;
@@ -18,8 +21,6 @@ public class CircleRectIntersect : MonoBehaviour
 
     private void Awake()
     {
-        halfW = Width * 0.5f;
-        halfH = Height * 0.5f;
         quadMat = quad.GetComponent<MeshRenderer>().material;
     }
 
@@ -34,14 +35,16 @@ public class CircleRectIntersect : MonoBehaviour
         sw.Start();
         for (int i = 0; i < cnt; i++)
         {
-            YHMath.CheckCircleRectInsert1(quad.position, new Vector2(halfW, halfH), ball.position, Radius);
+            //YHMath.CheckCircleRectInsert1(quad.position, new Vector2(halfW, halfH), ball.position, Radius);
+            YHMath.CheckCircleRectRotInsert(quad.position, new Vector2(halfW, halfH), Rot, ball.position, Radius);
         }
         UnityEngine.Debug.Log(sw.ElapsedMilliseconds);
 
         sw.Restart();
         for (int i = 0; i < cnt; i++)
         {
-            YHMath.CheckCircleRectInsert2(quad.position, new Vector2(halfW, halfH), ball.position, Radius);
+            //YHMath.CheckCircleRectInsert2(quad.position, new Vector2(halfW, halfH), ball.position, Radius);
+            YHMath.CheckCircleRectRotInsert2(quad.position, new Vector2(halfW, halfH), Rot, ball.position, Radius);
         }
         UnityEngine.Debug.Log(sw.ElapsedMilliseconds);
 
@@ -63,11 +66,16 @@ public class CircleRectIntersect : MonoBehaviour
 
     private void Check()
     {
+        halfW = Width * 0.5f;
+        halfH = Height * 0.5f;
+
         bool insert;
         //insert = YHMath.CheckCircleRectInsert1(quad.position, new Vector2(halfW, halfH), ball.position, Radius);
         //insert = YHMath.CheckCircleRectInsert2(quad.position, new Vector2(halfW, halfH), ball.position, Radius);
-        //------------- 还旋转的检测
-        insert = YHMath.CheckCircleRectRotInsert(quad.position, new Vector2(halfW, halfH), quad.localEulerAngles.z, ball.position, Radius);
+
+        //------------- 带旋转的检测
+        //insert = YHMath.CheckCircleRectRotInsert(quad.position, new Vector2(halfW, halfH), Rot, ball.position, Radius);
+        insert = YHMath.CheckCircleRectRotInsert2(quad.position, new Vector2(halfW, halfH), Rot, ball.position, Radius);
 
         if (quadMat != null)
             quadMat.color = insert ? Color.yellow : Color.white;
@@ -76,6 +84,8 @@ public class CircleRectIntersect : MonoBehaviour
     private void OnValidate()
     {
         ball.localScale = new Vector3(Radius*2, Radius*2, 1);
+        quad.position = new Vector3(RectPos.x, RectPos.y, 0);
+        quad.eulerAngles = new Vector3(0, 0, Rot);
         quad.localScale = new Vector3(Width, Height, 1);
 
         Check();
